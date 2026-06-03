@@ -10,6 +10,14 @@ Creates a git commit following [Conventional Commits](https://www.conventionalco
 
 **Triggers:** "commit", "make a commit", "commit this", "commit my changes", `/commit`
 
+---
+
+### `/pull-request`
+
+Creates an Azure DevOps pull request for the current branch.
+
+**Triggers:** "create a PR", "open a pull request", "make a PR", `/pull-request`
+
 ## Installation
 
 ### Via Claude Code plugin command
