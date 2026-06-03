@@ -1,0 +1,7 @@
+{
+  "name": "guttew-skills",
+  "skills": [
+    "./skills/pull-request",
+    "./skills/commit"
+  ]
+}
