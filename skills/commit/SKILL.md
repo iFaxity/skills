@@ -18,14 +18,20 @@ description: Creates a git commit following Conventional Commits conventions. Us
    - **Body:** include unless the change is trivial. Explain *what* and *why*, not *how*, in prose — no bullet points or lists. Blank line between header and body; wrap at 72 chars.
 5. Show the proposed message, confirm with the user, then commit via HEREDOC. (Skip confirmation if messages were already approved in step 3.)
 
+If Claude participated in making any of the committed changes, append a `Co-Authored-By` trailer:
+
 ```bash
 git commit -m "$(cat <<'EOF'
 <type>(<scope>): <description>
 
 <body>
+
+Co-Authored-By: Claude <noreply@anthropic.com>
 EOF
 )"
 ```
+
+Otherwise omit the trailer entirely.
 
 ## Rules
 
