@@ -1,6 +1,6 @@
 # guttew-skills
 
-A [Claude Code](https://claude.ai/code) plugin providing workflow skills for git commits and Azure DevOps pull requests.
+A [Claude Code](https://claude.ai/code) plugin providing workflow skills for git commits, branch creation, and Azure DevOps pull requests.
 
 ## Skills
 
@@ -9,6 +9,14 @@ A [Claude Code](https://claude.ai/code) plugin providing workflow skills for git
 Creates a git commit following [Conventional Commits](https://www.conventionalcommits.org/) conventions.
 
 **Triggers:** "commit", "make a commit", "commit this", "commit my changes", `/commit`
+
+---
+
+### `/create-branch`
+
+Creates a git branch following a consistent `type/kebab-case-description` naming convention.
+
+**Triggers:** "create a branch", "make a branch", "new branch", "checkout a new branch", `/create-branch`
 
 ---
 
