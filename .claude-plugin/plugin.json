@@ -2,6 +2,7 @@
   "name": "guttew-skills",
   "skills": [
     "./skills/pull-request",
-    "./skills/commit"
+    "./skills/commit",
+    "./skills/create-branch"
   ]
 }
