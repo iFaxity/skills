@@ -1,6 +1,6 @@
 # guttew-skills
 
-A [Claude Code](https://claude.ai/code) plugin providing workflow skills for git commits, branch creation, and Azure DevOps pull requests.
+A [Claude Code](https://claude.ai/code) plugin providing workflow skills for git commits, branch creation, and GitHub and Azure DevOps pull requests.
 
 ## Skills
 
@@ -22,7 +22,7 @@ Creates a git branch following a consistent `type/kebab-case-description` naming
 
 ### `/pull-request`
 
-Creates an Azure DevOps pull request for the current branch.
+Creates a pull request for the current branch on GitHub or Azure DevOps (auto-detected from the remote).
 
 **Triggers:** "create a PR", "open a pull request", "make a PR", `/pull-request`
 
@@ -44,7 +44,7 @@ pnpm dlx skills add github:guttew/skills
 
 - [Claude Code](https://claude.ai/code)
 - `git`
-- `az` CLI (Azure DevOps extension) — required only for `/pull-request`
+- `az` CLI (Azure DevOps extension) and/or `gh` CLI — required for `/pull-request` depending on the platform (auto-detected).
 
 ## License
 
