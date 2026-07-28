@@ -12,7 +12,7 @@ description: Creates a pull request for the current branch on GitHub or Azure De
 **Default format (no project convention found):** use this format for the PR description, using a discovered template as a structural guide but still applying these rules for content and emoji prefixes.
 
 Output structure:
-1. **Summary** — no header. Brief for short logs; narrative for long ones.
+1. **Summary** — no header. Brief for short logs; narrative for long ones. Wrap lines at 120 characters.
 2. **⚠️ BREAKING CHANGES** — only if a commit uses `feat!:`, `fix!:`, or `BREAKING CHANGE:`. Bold the impact.
 3. **## Key Changes** — single flat bulleted list; combine redundant commits.
 
