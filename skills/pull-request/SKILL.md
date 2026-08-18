@@ -16,11 +16,6 @@ Output structure:
 2. **⚠️ BREAKING CHANGES** — only if a commit uses `feat!:`, `fix!:`, or `BREAKING CHANGE:`. Bold the impact.
 3. **## Key Changes** — single flat bulleted list; combine redundant commits.
 
-References: only include refs from commit footers prefixed `Refs:`.
-- ADO Work Item IDs → `#123456` (auto-links in ADO)
-- GitHub issues/PRs → `#123` (auto-links in GitHub)
-- Commit hashes → append as `(a1b2c3d)` at end of bullet
-
 Emoji per type (prefix every bullet):
 
 | Emoji | Type                  |
@@ -35,6 +30,8 @@ Emoji per type (prefix every bullet):
 | 🧪    | test                  |
 
 Use action-oriented language; focus on user/system impact.
+
+Describe changes by what they do, not by what tracks them: never reference other PRs, work items/issues, or commit SHAs — by ID or by name — anywhere in the description. (The structured **Linked items** step — 6/8 below — is separate and unaffected: it deliberately asks for work-item/issue numbers to emit the platform's own linking syntax.)
 
 ## Process
 
