@@ -9,7 +9,13 @@ Use the detected default branch as the PR target — do not hardcode `main`.
 
 ## PR template path
 
-`.github/pull_request_template.md`, `.github/PULL_REQUEST_TEMPLATE.md`, or `docs/pull_request_template.md`; `(none found)` if absent. (`gh pr create` auto-applies the repo template if present, but read it to use as a structural guide for the Description Format.)
+Check in order, use the first that exists:
+1. `.github/pull_request_template.md`
+2. `.github/PULL_REQUEST_TEMPLATE.md`
+3. `docs/pull_request_template.md`
+4. `find . -iname '*pull_request_template*' -not -path '*/node_modules/*'` as a last resort
+
+`(none found)` if none of the above match. (`gh pr create` auto-applies the repo template if present, but read it to use as a structural guide for the Description Format.)
 
 ## Linked items
 

@@ -9,7 +9,14 @@ Parse the ADO project name from the remote URL (format: `git@ssh.dev.azure.com:v
 
 ## PR template path
 
-`.azuredevops/pull_request_template.md` or `docs/pull_request_template.md`; `(none found)` if absent.
+Check in order, use the first that exists:
+1. `.azuredevops/pull_request_template.md`
+2. `docs/pull_request_template.md`
+3. `docs/pull_request_template/branches/<default-branch>.md` — branch-specific template
+4. Any file directly inside `docs/pull_request_template/` (e.g. `docs/pull_request_template/default.md`) — list the directory if step 3 doesn't match
+5. `find . -iname '*pull_request_template*' -not -path '*/node_modules/*'` as a last resort
+
+`(none found)` if none of the above match.
 
 ## Linked items
 
