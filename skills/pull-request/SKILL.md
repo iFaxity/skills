@@ -44,7 +44,7 @@ Describe changes by what they do, not by what tracks them: never reference other
    - Azure DevOps → [ADO.md](./ADO.md)
    - GitHub → [GITHUB.md](./GITHUB.md)
 
-   Only the detected platform's file is loaded. It provides the exact commands and syntax for steps 3, 6, and 7 below.
+   Only the detected platform's file is loaded. It provides the exact commands and syntax for steps 3, 6, and 8 below.
 
 3. **Gather context.** Run the shared commands:
    ```bash
