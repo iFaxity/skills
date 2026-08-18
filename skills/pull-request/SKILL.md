@@ -5,34 +5,6 @@ description: Creates a pull request for the current branch on GitHub or Azure De
 
 # Pull Request
 
-## Description Format
-
-**Check project docs first.** Before applying anything below, look for PR instructions in `CLAUDE.md`/`AGENTS.md` (including files they `@`-include). Projects sometimes document their own template location and usage rules (e.g. "use verbatim, only replace placeholders" or "don't remove section headers") - if found, those rules take precedence over everything in this section. Only fall back to the format below when the project has no documented convention.
-
-**Default format (no project convention found):** use this format for the PR description, using a discovered template as a structural guide but still applying these rules for content and emoji prefixes.
-
-Output structure:
-1. **Summary** — no header. Target 3–5 sentences that distill the change, regardless of how large the commit log is. Wrap lines at 120 characters.
-2. **⚠️ BREAKING CHANGES** — only if a commit uses `feat!:`, `fix!:`, or `BREAKING CHANGE:`. Bold the impact.
-3. **## Key Changes** — single flat bulleted list; combine redundant commits.
-
-Emoji per type (prefix every bullet):
-
-| Emoji | Type                  |
-|-------|-----------------------|
-| ✨    | feat                  |
-| 🐛    | fix                   |
-| ♻️    | style                 |
-| ⚙️    | chore / build / ci    |
-| 🛠️    | refactor              |
-| ⚡    | perf                  |
-| 📝    | docs                  |
-| 🧪    | test                  |
-
-Use action-oriented language; focus on user/system impact.
-
-Describe changes by what they do, not by what tracks them: never reference other PRs, work items/issues, or commit SHAs — by ID or by name — anywhere in the description. (The structured **Linked items** step — 6/8 below — is separate and unaffected: it deliberately asks for work-item/issue numbers to emit the platform's own linking syntax.)
-
 ## Process
 
 1. **Detect platform.** Run `git remote get-url origin`. Match against:
@@ -51,14 +23,14 @@ Describe changes by what they do, not by what tracks them: never reference other
    git branch --show-current
    git remote get-url origin
    git log --oneline origin/HEAD..HEAD 2>/dev/null || git log --oneline HEAD
-   git diff --name-only origin/HEAD..HEAD 2>/dev/null
    ```
-   Then run the **platform-specific** context commands defined in the loaded sub-file (e.g. ADO: `az repos show --detect --query defaultBranch --output tsv` and template path `.azuredevops/pull_request_template.md`; GitHub: `gh repo view --json defaultBranchRef --jq .defaultBranchRef.name` and template path `.github/pull_request_template.md` or `.github/PULL_REQUEST_TEMPLATE.md`). The sub-file lists these verbatim.
+   The log is used only in step 6, to detect conventional-commit types and `!`/`BREAKING CHANGE:` markers — it does not drive the description content.
 
-   **Find the PR template.** Don't assume a fixed path — projects vary:
-   - Check `CLAUDE.md`/`AGENTS.md` (and anything they `@`-include) and `docs/how-to/pull-requests.md` for a documented template path or PR-writing instructions first.
-   - Otherwise search common locations: `.azuredevops/pull_request_template.md`, `docs/pull_request_template.md`, `docs/pull_request_template/branches/<default-branch>.md`, `.github/pull_request_template.md`, or `find . -iname '*pull_request_template*' -not -path '*/node_modules/*'`.
-   - If none found, proceed with the default format below.
+   Then run the **platform-specific** context commands defined in the loaded sub-file (default-branch detection and PR template search). The sub-file lists these verbatim.
+
+   Once the default branch is known, also run `git diff <default-branch>...HEAD` (merge-base diff) — this is what step 6 drafts the description from.
+
+   **Find the PR template.** Check `CLAUDE.md`/`AGENTS.md` (and anything they `@`-include) and `docs/how-to/pull-requests.md` for a documented template path first, otherwise use the platform-specific template search from the loaded sub-file. (Content conventions, as opposed to the template's path, are DESCRIPTION-FORMAT.md's own lookup in step 6.)
 
 4. **Validate branch name.** Must match `(bugfix|feature|hotfix)/<kebab-case-description>`. If not, warn and stop.
 
@@ -66,7 +38,7 @@ Describe changes by what they do, not by what tracks them: never reference other
 
 6. **Draft the PR.**
    - **Title:** conventional commits format — `<type>(<scope>): <description>`. Same rules as commit headers: imperative mood, all lowercase, no trailing period, ~50 chars, hard limit 72. Types: `feat`, `fix`, `refactor`, `chore`, `docs`, `style`, `test`, `perf`, `build`, `ci`, `revert`. Use `!` for breaking changes. Derive scope from the changed paths (kebab-case module/folder name); omit only if truly cross-cutting. Do not copy the branch name verbatim.
-   - **Description:** generate from the commit log per **## Description Format** above — follow the project's documented convention if one was found, otherwise the default format.
+   - **Description:** follow [DESCRIPTION-FORMAT.md](./DESCRIPTION-FORMAT.md), using the net diff gathered in step 3.
    - **Linked items:** platform-specific. The sub-file defines how:
      - ADO: ask user for work item IDs; skip `--work-items` if none.
      - GitHub: ask user for issue numbers to close; skip `Fixes #` lines if none.
