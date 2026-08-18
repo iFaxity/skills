@@ -9,7 +9,7 @@ description: Drafts and executes git commits in Conventional Commits format. Use
 2. If nothing is staged, inspect unstaged changes and ask which files to stage (or infer from context). Stage them, then re-read the diff.
 3. Derive the commit message/messages (rules below).
   - Include the detected agent name and model name used in the trailer. This is important for disclosure.
-4. Show the proposed message/messages in order, confirm with the user, then commit via HEREDOC. (Skip confirmation if already approved in step 3.).
+4. Show the proposed message/messages in order, confirm with the user, then commit via HEREDOC.
 
 ### Atomic commits
 
@@ -63,10 +63,10 @@ EOF
 )"
 ```
 
-**Assisted-by trailer** — only when an AI assisted the committed changes; otherwise omit entirely.
+**Assisted-by trailer** — add it if any of the staged changes were written or edited by AI. Omit entirely only when the user authored the whole diff and just asked the agent to commit it as-is.
 
 - Format: `Assisted-by: <agent-name>:<model-version>` (Linux kernel convention).
-- `<agent-name>` = the agent/harness making the commit. Read the `ROLE` section of the system preamble — it names the harness (e.g. "Oh My Pi coding harness" → `oh-my-pi`). Format as lower-kebab-case.
+- `<agent-name>` = the agent/harness making the commit. Read the `ROLE` section of the system preamble — it names the harness (e.g. "Oh My Pi coding harness" → `oh-my-pi`). If there is no `ROLE` section, use the harness's own product/CLI name (e.g. "claude-code"). Format as lower-kebab-case.
 - `<model-version>` = last `/`-segment of the system context `Model` field (e.g., `ollama-cloud/glm-5.2` => `glm-5.2`).
 - If `Model` is missing/empty, omit the suffix: `Assisted-by: <agent-name>`.
 - AI agents MUST NOT add `Signed-off-by` — only humans certify DCO.
