@@ -28,19 +28,19 @@ Creates a pull request for the current branch on GitHub or Azure DevOps (auto-de
 
 ---
 
-### `/spawn-agents`
+### `/claude-spawn-agents`
 
 Spawns a `claude --bg` background agent per work item, each in its own git worktree.
 
-**Triggers:** "parallelize work across background agents", `/spawn-agents`
+**Triggers:** "parallelize work across background agents", `/claude-spawn-agents`
 
 ---
 
-### `/spawn-tickets`
+### `/claude-spawn-tickets`
 
-Spawns a background agent per ready ticket from a `to-tickets` breakdown. A thin wrapper that hands off to `/spawn-agents` for the actual spawning mechanics.
+Spawns a background agent per ready ticket from a `to-tickets` breakdown. A thin wrapper that hands off to `/claude-spawn-agents` for the actual spawning mechanics.
 
-**Triggers:** `/spawn-tickets`
+**Triggers:** `/claude-spawn-tickets`
 
 ## Installation
 

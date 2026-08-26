@@ -1,5 +1,5 @@
 ---
-name: spawn-agents
+name: claude-spawn-agents
 description: Spawn a claude --bg background agent per work item, each in its own git worktree. Use when the user wants to parallelize work across background agents.
 argument-hint: "what to parallelize, or a ready-made item list"
 ---
