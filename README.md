@@ -26,6 +26,22 @@ Creates a pull request for the current branch on GitHub or Azure DevOps (auto-de
 
 **Triggers:** "create a PR", "open a pull request", "make a PR", `/pull-request`
 
+---
+
+### `/spawn-agents`
+
+Spawns a `claude --bg` background agent per work item, each in its own git worktree.
+
+**Triggers:** "parallelize work across background agents", `/spawn-agents`
+
+---
+
+### `/spawn-tickets`
+
+Spawns a background agent per ready ticket from a `to-tickets` breakdown. A thin wrapper that hands off to `/spawn-agents` for the actual spawning mechanics.
+
+**Triggers:** `/spawn-tickets`
+
 ## Installation
 
 ### Via Claude Code plugin command
