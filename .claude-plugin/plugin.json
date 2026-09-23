@@ -4,7 +4,6 @@
     "./skills/pull-request",
     "./skills/commit",
     "./skills/create-branch",
-    "./skills/claude-spawn-agents",
-    "./skills/claude-spawn-tickets"
+    "./skills/claude-spawn-agents"
   ]
 }
