@@ -1,0 +1,13 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "guttew",
+  "owner": { "name": "Christian Norrman" },
+  "description": "Workflow skills for git commits, branches, and pull requests.",
+  "plugins": [
+    {
+      "name": "guttew-skills",
+      "source": "./",
+      "description": "Workflow skills for git commits, branch creation, and GitHub and Azure DevOps pull requests."
+    }
+  ]
+}
