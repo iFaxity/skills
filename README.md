@@ -37,16 +37,25 @@ Spawns a `claude --bg` background agent per work item.
 
 ## Installation
 
-### Via Claude Code plugin command
+### Claude Code
 
 ```
-/plugin install github:guttew/skills
+/plugin marketplace add iFaxity/skills
+/plugin install guttew-skills@guttew
 ```
+
+### OpenAI Codex
+
+```bash
+codex plugin marketplace add iFaxity/skills
+```
+
+Then install `guttew-skills` from the `/plugins` browser.
 
 ### Via pnpm
 
 ```bash
-pnpm dlx skills add github:guttew/skills
+pnpm dlx skills add github:iFaxity/skills
 ```
 
 ## Requirements
