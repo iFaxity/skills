@@ -1,0 +1,5 @@
+interface:
+  display_name: "Claude Spawn Agents"
+  short_description: "Parallelize work across background agents"
+policy:
+  allow_implicit_invocation: false
