@@ -1,0 +1,12 @@
+{
+  "name": "guttew",
+  "interface": { "displayName": "guttew skills" },
+  "plugins": [
+    {
+      "name": "guttew-skills",
+      "source": { "source": "local", "path": "./" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    }
+  ]
+}

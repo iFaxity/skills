@@ -1,0 +1,9 @@
+{
+  "name": "guttew-skills",
+  "version": "0.1.0",
+  "description": "Workflow skills for git commits, branch creation, and GitHub and Azure DevOps pull requests.",
+  "author": { "name": "Christian Norrman" },
+  "repository": "https://github.com/iFaxity/skills",
+  "license": "MIT",
+  "skills": "./skills/"
+}
