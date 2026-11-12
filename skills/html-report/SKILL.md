@@ -16,4 +16,8 @@ disable-model-invocation: true
 
 ## Vocabulary
 
-The format's tone section names the `/codebase-design` glossary. For an architecture report, use it as written. For any other subject, keep the structure and the tone rules, and swap in that subject's own glossary (the project's `GLOSSARY.md` if one exists) as the vocabulary to use exactly.
+Resolve the vocabulary before writing any prose; the format's tone rules apply to whichever one you land on.
+
+1. **Project glossary.** If the repo has a `GLOSSARY.md` (or `CLAUDE.md`/`AGENTS.md` points to one), use its terms exactly for domain nouns.
+2. **`/codebase-design`.** If that skill is available and the report is about architecture, use its glossary for structural nouns (module, interface, seam, depth…). Combines with a project glossary rather than replacing it.
+3. **Neither.** No enforced glossary. Use the terms the project already uses in code, docs, and commit history, and keep each term consistent across the whole report.
