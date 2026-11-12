@@ -4,6 +4,8 @@ A [Claude Code](https://claude.ai/code) plugin providing workflow skills for git
 
 ## Skills
 
+Skills marked **Explicit only** never run on their own; call them by name (`/name` in Claude Code, `$name` in Codex).
+
 ### `/commit`
 
 Creates a git commit following [Conventional Commits](https://www.conventionalcommits.org/) conventions.
@@ -30,10 +32,19 @@ Creates a pull request for the current branch on GitHub or Azure DevOps (auto-de
 
 ### `/claude-spawn-agents`
 
-Spawns a `claude --bg` background agent per work item.
+**Explicit only.** Spawns a `claude --bg` background agent per work item. Pass what to parallelize, or a ready-made item list.
 
-**Triggers:** "parallelize work across background agents", `/claude-spawn-agents`
+---
 
+### `/implement`
+
+**Explicit only.** Implements a piece of work from a spec or a set of tickets.
+
+---
+
+### `/html-report`
+
+**Explicit only.** Renders findings as a visual, self-contained HTML report with before/after diagrams.
 
 ## Installation
 
