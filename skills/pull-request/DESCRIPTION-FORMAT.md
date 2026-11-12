@@ -8,7 +8,8 @@ Base the description on the **net diff** (`git diff <default-branch>...HEAD`), n
 
 1. **Summary** — no header, 3–5 sentences distilling the net diff regardless of commit-log size. Wrap at 120 chars.
 2. **⚠️ BREAKING CHANGES** — only if a commit uses `feat!:`, `fix!:`, or `BREAKING CHANGE:`. Bold the impact.
-3. **## Key Changes** — flat bulleted list, one bullet per distinct change in the diff, never per commit. Prefix each bullet with its type's emoji, inferred from that diff hunk itself (not a commit prefix):
+3. **## Key Changes** — flat bulleted list, one bullet per distinct change in the diff, never per commit. Every bullet starts with exactly one emoji, inferred from that diff hunk itself (not a commit prefix), and nothing else before the text — no type word, no `type:` label, never both:
    ✨ feat · 🐛 fix · ♻️ style · ⚙️ chore/build/ci · 🛠️ refactor · ⚡ perf · 📝 docs · 🧪 test
+   - `- ✨ Add dark mode toggle to settings panel`
 
 Action-oriented language, focused on user/system impact. Never reference other PRs, work items/issues, or commit SHAs — by ID or name — anywhere: describe what changed, not what tracks it. (Linked items, drafted separately in the process, intentionally emits issue/work-item numbers.)
