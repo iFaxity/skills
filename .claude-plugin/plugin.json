@@ -5,6 +5,7 @@
     "./skills/commit",
     "./skills/create-branch",
     "./skills/claude-spawn-agents",
-    "./skills/implement"
+    "./skills/implement",
+    "./skills/html-report"
   ]
 }

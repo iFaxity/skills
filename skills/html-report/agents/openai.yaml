@@ -1,0 +1,5 @@
+interface:
+  display_name: "HTML Report"
+  short_description: "Render findings as a visual HTML report"
+policy:
+  allow_implicit_invocation: false
