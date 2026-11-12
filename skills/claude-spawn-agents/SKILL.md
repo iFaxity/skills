@@ -2,6 +2,7 @@
 name: claude-spawn-agents
 description: Spawn a claude --bg background agent per work item. Use when the user wants to parallelize work across background agents.
 argument-hint: "what to parallelize, or a ready-made item list"
+disable-model-invocation: true
 ---
 
 The argument says what to parallelize. If it's not enough to work from, ask rather than guess before continuing.
