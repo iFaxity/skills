@@ -32,7 +32,7 @@ description: Creates a pull request for the current branch on GitHub or Azure De
 
    **Find the PR template.** Check `CLAUDE.md`/`AGENTS.md` (and anything they `@`-include) and `docs/how-to/pull-requests.md` for a documented template path first, otherwise use the platform-specific template search from the loaded sub-file. (Content conventions, as opposed to the template's path, are DESCRIPTION-FORMAT.md's own lookup in step 6.)
 
-4. **Validate branch name.** Must match `(bugfix|feature|hotfix)/<kebab-case-description>`. If not, warn and stop.
+4. **Check for an existing PR.** Run the platform-specific existing-PR check from the loaded sub-file. If one is already open for this branch, report its URL (step 9) and stop — do not draft or create a duplicate.
 
 5. **Push if needed.** Check upstream with `git rev-parse --abbrev-ref --symbolic-full-name @{u} 2>/dev/null`. If none, show then run: `git push --set-upstream origin <branch>`.
 
@@ -49,7 +49,7 @@ description: Creates a pull request for the current branch on GitHub or Azure De
    - ADO sub-file: `az repos pr create` with `--detect`, `--project`, HEREDOC `--description`, `--target-branch`, optional `--work-items`.
    - GitHub sub-file: `gh pr create` with `--base`, `--head`, `--title`, HEREDOC `--body`, optional `--draft` only if requested.
 
-9. **Report the URL.** Parse and show the PR URL from the command output.
+9. **Report the URL.** Parse the PR URL from the create command's output and show it on its own line, unformatted, so it's directly clickable/copyable — this is the last thing you output, every time this skill runs, including the early-exit in step 4.
 
 ## Rules
 
@@ -57,3 +57,4 @@ description: Creates a pull request for the current branch on GitHub or Azure De
 - Never create a draft PR unless explicitly asked.
 - Never push to the default branch.
 - If push is rejected, stop and report — do not force-push.
+- Prefer a `feature/`, `bugfix/`, `hotfix/`, or `chore/` branch prefix; don't block PR creation if the branch is named otherwise.

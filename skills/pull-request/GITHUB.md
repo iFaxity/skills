@@ -17,6 +17,13 @@ Check in order, use the first that exists:
 
 `(none found)` if none of the above match. (`gh pr create` auto-applies the repo template if present, but read it to use as a structural guide for the Description Format.)
 
+## Existing PR check
+
+```bash
+gh pr view --json url -q .url 2>/dev/null
+```
+Empty output means no open PR for this branch — proceed. Non-empty output is the URL to report in step 4.
+
 ## Linked items
 
 Ask the user for GitHub issue numbers to auto-close on merge. Add `Fixes #123` (one per issue) at the end of the description body. No CLI flag needed.
